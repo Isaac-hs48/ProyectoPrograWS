@@ -77,7 +77,7 @@ namespace WSHHVentasSeguros.Logic
 
                 cmd.Parameters.Add(new SqlParameter("@nombreUsuario", pClsUsuario.NombreUsuario));
 
-                cmd.Parameters.Add(new SqlParameter("@contrasena", pClsUsuario.Contraseña));
+                cmd.Parameters.Add(new SqlParameter("@contrasena", pClsUsuario.Contrasena));
 
                 conn.Open();
 
@@ -123,7 +123,7 @@ namespace WSHHVentasSeguros.Logic
 
                 cmd.Parameters.Add(new SqlParameter("@nombreUsuario", pClsUsuario.NombreUsuario));
 
-                cmd.Parameters.Add(new SqlParameter("@contrasena", pClsUsuario.Contraseña));
+                cmd.Parameters.Add(new SqlParameter("@contrasena", pClsUsuario.Contrasena));
 
                 conn.Open();
 

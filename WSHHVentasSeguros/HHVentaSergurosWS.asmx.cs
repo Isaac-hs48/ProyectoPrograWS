@@ -38,7 +38,7 @@ namespace WSHHVentasSeguros
             {
                 NombreCompleto = nombre,
                 NombreUsuario = usuario,
-                Contraseña = contrasena
+                Contrasena = contrasena
             };
 
             string vError = string.Empty;
@@ -63,7 +63,7 @@ namespace WSHHVentasSeguros
                 IdUsuario = idUsuario,
                 NombreCompleto = nombre,
                 NombreUsuario = usuario,
-                Contraseña = contrasena
+                Contrasena = contrasena
             };
 
             string vError = string.Empty;
