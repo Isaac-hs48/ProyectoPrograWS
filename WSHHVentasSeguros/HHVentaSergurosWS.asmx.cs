@@ -30,7 +30,7 @@ namespace WSHHVentasSeguros
         }
 
         [WebMethod]
-        public string InsertUser(string nombre, string usuario, string contrasena)
+        public string InsertUser(string nombre, string usuario, string contrasena, int idCreadoPor)
         {
             blUsuario blUsuario = new blUsuario();
 
@@ -38,7 +38,8 @@ namespace WSHHVentasSeguros
             {
                 NombreCompleto = nombre,
                 NombreUsuario = usuario,
-                Contrasena = contrasena
+                Contrasena = contrasena,
+                IdCreadoPor = idCreadoPor,
             };
 
             string vError = string.Empty;
@@ -54,7 +55,7 @@ namespace WSHHVentasSeguros
         }
 
         [WebMethod]
-        public string UpdateUser(int idUsuario, string nombre, string usuario, string contrasena)
+        public string UpdateUser(int idUsuario, string nombre, string usuario, string contrasena, int idModificadoPor)
         {
             blUsuario blUsuario = new blUsuario();
 
@@ -63,7 +64,8 @@ namespace WSHHVentasSeguros
                 IdUsuario = idUsuario,
                 NombreCompleto = nombre,
                 NombreUsuario = usuario,
-                Contrasena = contrasena
+                Contrasena = contrasena,
+                IdModificadoPor = idModificadoPor
             };
 
             string vError = string.Empty;

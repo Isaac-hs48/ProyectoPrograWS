@@ -79,6 +79,8 @@ namespace WSHHVentasSeguros.Logic
 
                 cmd.Parameters.Add(new SqlParameter("@contrasena", pClsUsuario.Contrasena));
 
+                cmd.Parameters.Add(new SqlParameter("@idCreadoPor", pClsUsuario.IdCreadoPor));
+
                 conn.Open();
 
                 int vAffectedRows = cmd.ExecuteNonQuery();
@@ -124,6 +126,8 @@ namespace WSHHVentasSeguros.Logic
                 cmd.Parameters.Add(new SqlParameter("@nombreUsuario", pClsUsuario.NombreUsuario));
 
                 cmd.Parameters.Add(new SqlParameter("@contrasena", pClsUsuario.Contrasena));
+
+                cmd.Parameters.Add(new SqlParameter("@idModificadoPor", pClsUsuario.IdModificadoPor));
 
                 conn.Open();
 
