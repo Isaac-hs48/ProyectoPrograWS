@@ -30,7 +30,7 @@ namespace WSHHVentasSeguros
         }
 
         [WebMethod]
-        public string InsertUser(string nombre, string usuario, string contrasena, int idCreadoPor)
+        public string InsertUser(string nombre, string usuario, string contrasena, string idCreadoPor)
         {
             blUsuario blUsuario = new blUsuario();
 
@@ -39,7 +39,7 @@ namespace WSHHVentasSeguros
                 NombreCompleto = nombre,
                 NombreUsuario = usuario,
                 Contrasena = contrasena,
-                IdCreadoPor = idCreadoPor,
+                IdCreadoPor = String.IsNullOrEmpty(idCreadoPor) ? -1 : Convert.ToInt32(idCreadoPor),
             };
 
             string vError = string.Empty;
