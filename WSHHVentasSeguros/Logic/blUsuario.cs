@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Prueba
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -52,7 +53,6 @@ namespace WSHHVentasSeguros.Logic
                 cmd.Dispose();
                 conn.Close();
                 conn = null;
-                //dc
             }
 
             return users;
