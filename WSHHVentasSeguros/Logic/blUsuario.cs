@@ -54,6 +54,7 @@ namespace WSHHVentasSeguros.Logic
                 cmd.Dispose();
                 conn.Close();
                 conn = null;
+                //dc
             }
 
             return users;
