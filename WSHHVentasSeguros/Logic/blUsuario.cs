@@ -1,5 +1,4 @@
 ﻿//Prueba
-
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -54,7 +53,6 @@ namespace WSHHVentasSeguros.Logic
                 cmd.Dispose();
                 conn.Close();
                 conn = null;
-                //dc
             }
 
             return users;
