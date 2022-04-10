@@ -9,7 +9,7 @@ namespace WSHHVentasSeguros.Data
     {
         public int IdCreadoPor { get; set; }
         public int IdModificadoPor { get; set; }
-        public DateTime FechaCreacion { get; set; }
-        public DateTime FechaModificacion { get; set; }
+        public DateTime FechaCreadoPor { get; set; }
+        public DateTime FechaModificadoPor { get; set; }
     }
 }

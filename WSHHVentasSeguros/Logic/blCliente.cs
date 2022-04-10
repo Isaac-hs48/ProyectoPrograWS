@@ -1,5 +1,4 @@
-﻿//Prueba
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,11 +10,11 @@ using WSHHVentasSeguros.Shared;
 
 namespace WSHHVentasSeguros.Logic
 {
-    public class BlUsuario
+    public class BlCliente
     {
-        public List<ClsUsuario> GetUsers(ref string pError)
+        public List<ClsCliente> GetCustomers(ref string pError)
         {
-            List<ClsUsuario> users = new List<ClsUsuario>();
+            List<ClsCliente> customers = new List<ClsCliente>();
 
             SqlConnection conn = new SqlConnection(Connection.Connection.GetConnectionString());
 
@@ -29,7 +28,7 @@ namespace WSHHVentasSeguros.Logic
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.CommandText = ClsShared.GetEnumPropertyName(ClsConstants.HHVentasSegurosObjects.SP_SELECT_USUARIOS);
+                cmd.CommandText = ClsShared.GetEnumPropertyName(ClsConstants.HHVentasSegurosObjects.SP_SELECT_CLIENTES);
 
                 conn.Open();
 
@@ -37,9 +36,9 @@ namespace WSHHVentasSeguros.Logic
 
                 while (reader.Read())
                 {
-                    ClsUsuario vUser = ClsShared.FillObjectProperties<ClsUsuario>(reader);
+                    ClsCliente vCustomer = ClsShared.FillObjectProperties<ClsCliente>(reader);
 
-                    users.Add(vUser);
+                    customers.Add(vCustomer);
                 }
 
             }
@@ -55,10 +54,10 @@ namespace WSHHVentasSeguros.Logic
                 conn = null;
             }
 
-            return users;
+            return customers;
         }
 
-        public bool InsertUser(ClsUsuario pClsUsuario, ref string pError)
+        public bool InserCustomer(ClsCliente pClsCliente, ref string pError)
         {
             SqlConnection conn = new SqlConnection(Connection.Connection.GetConnectionString());
 
@@ -72,15 +71,19 @@ namespace WSHHVentasSeguros.Logic
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.CommandText = ClsShared.GetEnumPropertyName(ClsConstants.HHVentasSegurosObjects.SP_INSERT_USUARIO);
+                cmd.CommandText = ClsShared.GetEnumPropertyName(ClsConstants.HHVentasSegurosObjects.SP_INSERT_CLIENTE);
 
-                cmd.Parameters.Add(new SqlParameter("@nombreCompleto", pClsUsuario.NombreCompleto));
+                cmd.Parameters.Add(new SqlParameter("@nombreCompleto", pClsCliente.NombreCompleto));
 
-                cmd.Parameters.Add(new SqlParameter("@nombreUsuario", pClsUsuario.NombreUsuario));
+                cmd.Parameters.Add(new SqlParameter("@tipoCedula", pClsCliente.TipoCedula));
 
-                cmd.Parameters.Add(new SqlParameter("@contrasena", pClsUsuario.Contrasena));
+                cmd.Parameters.Add(new SqlParameter("@numeroCedula", pClsCliente.NumeroCedula));
 
-                cmd.Parameters.Add(new SqlParameter("@idCreadoPor", pClsUsuario.IdCreadoPor));
+                cmd.Parameters.Add(new SqlParameter("@numeroTelefono", pClsCliente.NumeroTelefono));
+
+                cmd.Parameters.Add(new SqlParameter("@correoElectronico", pClsCliente.CorreoElectronico));
+
+                cmd.Parameters.Add(new SqlParameter("@idCreadoPor", pClsCliente.IdCreadoPor));
 
                 conn.Open();
 
@@ -104,7 +107,7 @@ namespace WSHHVentasSeguros.Logic
             return success;
         }
 
-        public bool UpdateUser(ClsUsuario pClsUsuario, ref string pError)
+        public bool UpdateCustomer(ClsCliente pClsCliente, ref string pError)
         {
             SqlConnection conn = new SqlConnection(Connection.Connection.GetConnectionString());
 
@@ -118,17 +121,21 @@ namespace WSHHVentasSeguros.Logic
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.CommandText = ClsShared.GetEnumPropertyName(ClsConstants.HHVentasSegurosObjects.SP_UPDATE_USUARIO);
+                cmd.CommandText = ClsShared.GetEnumPropertyName(ClsConstants.HHVentasSegurosObjects.SP_UPDATE_CLIENTE);
 
-                cmd.Parameters.Add(new SqlParameter("@idUsuario", pClsUsuario.IdUsuario));
+                cmd.Parameters.Add(new SqlParameter("@idCliente", pClsCliente.IdCliente));
 
-                cmd.Parameters.Add(new SqlParameter("@nombreCompleto", pClsUsuario.NombreCompleto));
+                cmd.Parameters.Add(new SqlParameter("@nombreCompleto", pClsCliente.NombreCompleto));
 
-                cmd.Parameters.Add(new SqlParameter("@nombreUsuario", pClsUsuario.NombreUsuario));
+                cmd.Parameters.Add(new SqlParameter("@tipoCedula", pClsCliente.TipoCedula));
 
-                cmd.Parameters.Add(new SqlParameter("@contrasena", pClsUsuario.Contrasena));
+                cmd.Parameters.Add(new SqlParameter("@numeroCedula", pClsCliente.NumeroCedula));
 
-                cmd.Parameters.Add(new SqlParameter("@idModificadoPor", pClsUsuario.IdModificadoPor));
+                cmd.Parameters.Add(new SqlParameter("@numeroTelefono", pClsCliente.NumeroTelefono));
+
+                cmd.Parameters.Add(new SqlParameter("@correoElectronico", pClsCliente.CorreoElectronico));
+
+                cmd.Parameters.Add(new SqlParameter("@idModificadoPor", pClsCliente.IdModificadoPor));
 
                 conn.Open();
 
@@ -152,7 +159,7 @@ namespace WSHHVentasSeguros.Logic
             return success;
         }
 
-        public bool DeleteUser(int pIdUsuario, ref string pError)
+        public bool DeleteCustomer(int pIdCliente, ref string pError)
         {
             SqlConnection conn = new SqlConnection(Connection.Connection.GetConnectionString());
 
@@ -166,9 +173,9 @@ namespace WSHHVentasSeguros.Logic
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.CommandText = ClsShared.GetEnumPropertyName(ClsConstants.HHVentasSegurosObjects.SP_DELETE_USUARIO);
+                cmd.CommandText = ClsShared.GetEnumPropertyName(ClsConstants.HHVentasSegurosObjects.SP_DELETE_CLIENTE);
 
-                cmd.Parameters.Add(new SqlParameter("@idUsuario", pIdUsuario));
+                cmd.Parameters.Add(new SqlParameter("@idCliente", pIdCliente));
 
                 conn.Open();
 

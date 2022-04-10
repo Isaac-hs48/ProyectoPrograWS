@@ -18,11 +18,11 @@ namespace WSHHVentasSeguros
     // [System.Web.Script.Services.ScriptService]
     public class HHVentaSergurosWS : System.Web.Services.WebService
     {
-
+        #region Usuarios
         [WebMethod]
         public List<ClsUsuario> GetUsers()
         {
-            blUsuario blUsuario = new blUsuario();
+            BlUsuario blUsuario = new BlUsuario();
 
             string vError = string.Empty;
 
@@ -32,7 +32,7 @@ namespace WSHHVentasSeguros
         [WebMethod]
         public string InsertUser(string nombre, string usuario, string contrasena, string idCreadoPor)
         {
-            blUsuario blUsuario = new blUsuario();
+            BlUsuario blUsuario = new BlUsuario();
 
             ClsUsuario user = new ClsUsuario
             {
@@ -57,7 +57,7 @@ namespace WSHHVentasSeguros
         [WebMethod]
         public string UpdateUser(int idUsuario, string nombre, string usuario, string contrasena, int idModificadoPor)
         {
-            blUsuario blUsuario = new blUsuario();
+            BlUsuario blUsuario = new BlUsuario();
 
             ClsUsuario user = new ClsUsuario
             {
@@ -83,7 +83,7 @@ namespace WSHHVentasSeguros
         [WebMethod]
         public string DeleteUser(int pIdUsuario)
         {
-            blUsuario blUsuario = new blUsuario();
+            BlUsuario blUsuario = new BlUsuario();
 
             string vError = string.Empty;
 
@@ -96,5 +96,89 @@ namespace WSHHVentasSeguros
 
             return vError;
         }
+#endregion
+        #region Clientes
+        [WebMethod]
+        public List<ClsCliente> GetCustomers()
+        {
+            BlCliente blCliente = new BlCliente();
+
+            string vError = string.Empty;
+
+            return blCliente.GetCustomers(ref vError);
+        }
+
+        [WebMethod]
+        public string InsertCustomer(string nombre, string tipoCedula, string numeroCedula, string numeroTelefono, string correoElectronico, int idCreadoPor)
+        {
+            BlCliente blCliente = new BlCliente();
+
+            ClsCliente customer = new ClsCliente
+            {
+                NombreCompleto = nombre,
+                TipoCedula = tipoCedula,
+                NumeroCedula = numeroCedula,
+                NumeroTelefono = numeroTelefono,
+                CorreoElectronico = correoElectronico,
+                IdCreadoPor = idCreadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blCliente.InserCustomer(customer, ref vError);
+
+            if (success)
+            {
+                return "Cliente creado correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string UpdateCustomer(int idCliente, string nombre, string tipoCedula, string numeroCedula, string numeroTelefono, string correoElectronico, int idModificadoPor)
+        {
+            BlCliente blCliente = new BlCliente();
+
+            ClsCliente customer = new ClsCliente
+            {
+                IdCliente = idCliente,
+                NombreCompleto = nombre,
+                TipoCedula = tipoCedula,
+                NumeroCedula = numeroCedula,
+                NumeroTelefono = numeroTelefono,
+                CorreoElectronico = correoElectronico,
+                IdModificadoPor = idModificadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blCliente.UpdateCustomer(customer, ref vError);
+
+            if (success)
+            {
+                return "Cliente modificado correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string DeleteCustomer(int pIdCustomer)
+        {
+            BlCliente blCliente = new BlCliente();
+
+            string vError = string.Empty;
+
+            bool success = blCliente.DeleteCustomer(pIdCustomer, ref vError);
+
+            if (success)
+            {
+                return "Cliente eliminado correctamente";
+            }
+
+            return vError;
+        }
+        #endregion
     }
 }
