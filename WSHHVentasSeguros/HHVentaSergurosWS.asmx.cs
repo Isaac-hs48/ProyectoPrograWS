@@ -180,5 +180,91 @@ namespace WSHHVentasSeguros
             return vError;
         }
         #endregion
+
+        #region Proveedores
+        [WebMethod]
+        public List<ClsProveedor> GetSuppliers()
+        {
+            BlProveedor blProveedor = new BlProveedor();
+
+            string vError = string.Empty;
+
+            return blProveedor.GetSuppliers(ref vError);
+        }
+
+        [WebMethod]
+        public string InsertSupplier(string nombre, string tipoCedula, string numeroCedula, string numeroTelefono, string correoElectronico, string descripcion, int idCreadoPor)
+        {
+            BlProveedor blProveedor = new BlProveedor();
+
+            ClsProveedor Supplier = new ClsProveedor
+            {
+                NombreCompleto = nombre,
+                TipoCedula = tipoCedula,
+                NumeroCedula = numeroCedula,
+                NumeroTelefono = numeroTelefono,
+                CorreoElectronico = correoElectronico,
+                Descripcion = descripcion,
+                IdCreadoPor = idCreadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blProveedor.InsertSupplier(Supplier, ref vError);
+
+            if (success)
+            {
+                return "Proveedor creado correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string UpdateSupplier(int idProveedor, string nombre, string tipoCedula, string numeroCedula, string numeroTelefono, string correoElectronico, string descripcion, int idModificadoPor)
+        {
+            BlProveedor blProveedor = new BlProveedor();
+
+            ClsProveedor Supplier = new ClsProveedor
+            {
+                IdProveedor = idProveedor,
+                NombreCompleto = nombre,
+                TipoCedula = tipoCedula,
+                NumeroCedula = numeroCedula,
+                NumeroTelefono = numeroTelefono,
+                CorreoElectronico = correoElectronico,
+                Descripcion =  descripcion,
+                IdModificadoPor = idModificadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blProveedor.UpdateSupplier(Supplier, ref vError);
+
+            if (success)
+            {
+                return "Proveedor modificado correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string DeleteSupplier(int pIdSupplier)
+        {
+            BlProveedor blProveedor = new BlProveedor();
+
+            string vError = string.Empty;
+
+            bool success = blProveedor.DeleteSupplier(pIdSupplier, ref vError);
+
+            if (success)
+            {
+                return "Proveedor eliminado correctamente";
+            }
+
+            return vError;
+        }
+        #endregion
     }
 }
