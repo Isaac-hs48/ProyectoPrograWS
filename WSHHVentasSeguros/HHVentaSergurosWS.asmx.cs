@@ -266,5 +266,245 @@ namespace WSHHVentasSeguros
             return vError;
         }
         #endregion
+
+        #region Ventas
+        [WebMethod]
+        public List<clsVenta> GetSales()
+        {
+            blVenta blVenta = new blVenta();
+
+            string vError = string.Empty;
+
+            return blVenta.GetSales(ref vError);
+        }
+
+        [WebMethod]
+        public string InsertSale(int idServicio, int idCliente, string identificacion, float totalColones, int idCreadoPor)
+        {
+            blVenta blVenta = new blVenta();
+
+            clsVenta sale = new clsVenta
+            {
+                idServicio = idServicio,
+                idCliente = idCliente,
+                identificacion = identificacion,
+                totalColones = totalColones,
+                IdCreadoPor = idCreadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blVenta.InsertSale(sale, ref vError);
+
+            if (success)
+            {
+                return "Venta registrada correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string UpdateSale(int idVenta, int idServicio, int idCliente, string identificacion, float totalColones, int idModificadoPor)
+        {
+            blVenta blVenta = new blVenta();
+
+            clsVenta sale = new clsVenta
+            {
+                idVenta = idVenta,
+                idServicio = idServicio,
+                idCliente = idCliente,
+                identificacion = identificacion,
+                totalColones = totalColones,
+                IdModificadoPor = idModificadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blVenta.UpdateSale(sale, ref vError);
+
+            if (success)
+            {
+                return "Venta modificada correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string DeleteSale(int pIdVenta)
+        {
+            blVenta blVenta = new blVenta();
+
+            string vError = string.Empty;
+
+            bool success = blVenta.DeleteSale(pIdVenta, ref vError);
+
+            if (success)
+            {
+                return "Venta eliminada correctamente";
+            }
+
+            return vError;
+        }
+        #endregion
+        #region Servicios
+        [WebMethod]
+        public List<clsServicio> GetServices()
+        {
+            blServicio blServicio = new blServicio();
+
+            string vError = string.Empty;
+
+            return blServicio.GetServices(ref vError);
+        }
+
+        [WebMethod]
+        public string InsertService(string tipoServicio, float precioColones, int idCreadoPor)
+        {
+            blServicio blServicio = new blServicio();
+
+            clsServicio service = new clsServicio
+            {
+                tipoServicio = tipoServicio,
+                precioColones = precioColones,
+                IdCreadoPor = idCreadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blServicio.InsertService(service, ref vError);
+
+            if (success)
+            {
+                return "Servicio de seguro registrado correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string UpdateService(int idServicio, string tipoServicio, float precioColones, int idModificadoPor)
+        {
+            blServicio blServicio = new blServicio();
+
+            clsServicio service = new clsServicio
+            {
+                idServicio = idServicio,
+                tipoServicio = tipoServicio,
+                precioColones = precioColones,
+                IdModificadoPor = idModificadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blServicio.UpdateService(service, ref vError);
+
+            if (success)
+            {
+                return "Servicio de seguros modificado correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string DeleteService(int pIdServicio)
+        {
+            blServicio blServicio = new blServicio();
+
+            string vError = string.Empty;
+
+            bool success = blServicio.DeleteService(pIdServicio, ref vError);
+
+            if (success)
+            {
+                return "Servicio de seguros eliminado correctamente";
+            }
+
+            return vError;
+        }
+        #endregion
+        #region Activos
+        [WebMethod]
+        public List<clsActivo> GetAssets()
+        {
+            blActivo blActivo = new blActivo();
+
+            string vError = string.Empty;
+
+            return blActivo.GetAssets(ref vError);
+        }
+
+        [WebMethod]
+        public string InsertAsset(string descripcion, float precioColones, int vidaUtilAnos, float valorDesechoColones, int idCreadoPor)
+        {
+            blActivo blActivo = new blActivo();
+
+            clsActivo asset = new clsActivo
+            {
+                descripcion = descripcion,
+                precioColones = precioColones,
+                vidaUtilAnos = vidaUtilAnos,
+                valorDesechoColones = valorDesechoColones,
+                IdCreadoPor = idCreadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blActivo.InsertAsset(asset, ref vError);
+
+            if (success)
+            {
+                return "Activo registrado correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string UpdateAsset(int idActivo, string descripcion, float precioColones, int vidaUtilAnos, float valorDesechoColones, int idModificadoPor)
+        {
+            blActivo blActivo = new blActivo();
+
+            clsActivo asset = new clsActivo
+            {
+                idActivo = idActivo,
+                descripcion = descripcion,
+                precioColones = precioColones,
+                vidaUtilAnos = vidaUtilAnos,
+                valorDesechoColones = valorDesechoColones,
+                IdModificadoPor = idModificadoPor
+            };
+
+            string vError = string.Empty;
+
+            bool success = blActivo.UpdateAsset(asset, ref vError);
+
+            if (success)
+            {
+                return "Activo modificado correctamente";
+            }
+
+            return vError;
+        }
+
+        [WebMethod]
+        public string DeleteAsset(int pIdActivo)
+        {
+            blActivo blActivo = new blActivo();
+
+            string vError = string.Empty;
+
+            bool success = blActivo.DeleteAsset(pIdActivo, ref vError);
+
+            if (success)
+            {
+                return "Activo eliminado correctamente";
+            }
+
+            return vError;
+        }
+        #endregion
     }
 }

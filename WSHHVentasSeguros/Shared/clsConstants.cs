@@ -32,7 +32,8 @@ namespace WSHHVentasSeguros.Shared
             spSelectVentas,
             spUpdateActivos,
             spUpdateServicio,
-            spUpdateVentas
+            spUpdateVentas,
+            spDepreciacion
         }
     }
 }

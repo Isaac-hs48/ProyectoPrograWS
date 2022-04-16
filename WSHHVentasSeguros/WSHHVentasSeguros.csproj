@@ -72,17 +72,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection\Connection.cs" />
+    <Compile Include="Data\clsActivo.cs" />
     <Compile Include="Data\clsAuditoria.cs" />
     <Compile Include="Data\clsCliente.cs" />
+    <Compile Include="Data\clsDepreciacion.cs" />
     <Compile Include="Data\ClsProveedor.cs" />
+    <Compile Include="Data\clsServicio.cs" />
     <Compile Include="Data\clsUsuario.cs" />
+    <Compile Include="Data\clsVenta.cs" />
     <Compile Include="HHVentaSergurosWS.asmx.cs">
       <DependentUpon>HHVentaSergurosWS.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Logic\blActivo.cs" />
     <Compile Include="Logic\blCliente.cs" />
+    <Compile Include="Logic\blDepreciacion.cs" />
     <Compile Include="Logic\BlProveedor.cs" />
+    <Compile Include="Logic\blServicio.cs" />
     <Compile Include="Logic\blUsuario.cs" />
+    <Compile Include="Logic\blVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\clsConstants.cs" />
     <Compile Include="Shared\clsShared.cs" />
