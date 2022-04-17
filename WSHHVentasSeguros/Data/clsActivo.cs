@@ -11,11 +11,11 @@ namespace WSHHVentasSeguros.Data
 
         public string descripcion { get; set; }
 
-        public float precioColones { get; set; }
+        public double precioColones { get; set; }
 
         public int vidaUtilAnos { get; set; }
 
-        public float valorDesechoColones { get; set; }
+        public double valorDesechoColones { get; set; }
 
         public string estado { get; set; }
     }

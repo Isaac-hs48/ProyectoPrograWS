@@ -279,7 +279,7 @@ namespace WSHHVentasSeguros
         }
 
         [WebMethod]
-        public string InsertSale(int idServicio, int idCliente, string identificacion, float totalColones, int idCreadoPor)
+        public string InsertSale(int idServicio, int idCliente, string identificacion, double totalColones, int idCreadoPor)
         {
             blVenta blVenta = new blVenta();
 
@@ -305,7 +305,7 @@ namespace WSHHVentasSeguros
         }
 
         [WebMethod]
-        public string UpdateSale(int idVenta, int idServicio, int idCliente, string identificacion, float totalColones, int idModificadoPor)
+        public string UpdateSale(int idVenta, int idServicio, int idCliente, string identificacion, double totalColones, int idModificadoPor)
         {
             blVenta blVenta = new blVenta();
 
@@ -360,7 +360,7 @@ namespace WSHHVentasSeguros
         }
 
         [WebMethod]
-        public string InsertService(string tipoServicio, float precioColones, int idCreadoPor)
+        public string InsertService(string tipoServicio, double precioColones, int idCreadoPor)
         {
             blServicio blServicio = new blServicio();
 
@@ -384,7 +384,7 @@ namespace WSHHVentasSeguros
         }
 
         [WebMethod]
-        public string UpdateService(int idServicio, string tipoServicio, float precioColones, int idModificadoPor)
+        public string UpdateService(int idServicio, string tipoServicio, double precioColones, int idModificadoPor)
         {
             blServicio blServicio = new blServicio();
 
@@ -437,7 +437,7 @@ namespace WSHHVentasSeguros
         }
 
         [WebMethod]
-        public string InsertAsset(string descripcion, float precioColones, int vidaUtilAnos, float valorDesechoColones, int idCreadoPor)
+        public string InsertAsset(string descripcion, double precioColones, int vidaUtilAnos, double valorDesechoColones, int idCreadoPor)
         {
             blActivo blActivo = new blActivo();
 
@@ -463,7 +463,7 @@ namespace WSHHVentasSeguros
         }
 
         [WebMethod]
-        public string UpdateAsset(int idActivo, string descripcion, float precioColones, int vidaUtilAnos, float valorDesechoColones, int idModificadoPor)
+        public string UpdateAsset(int idActivo, string descripcion, double precioColones, int vidaUtilAnos, double valorDesechoColones, int idModificadoPor)
         {
             blActivo blActivo = new blActivo();
 
