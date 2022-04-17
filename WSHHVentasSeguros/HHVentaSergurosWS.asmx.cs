@@ -505,6 +505,16 @@ namespace WSHHVentasSeguros
 
             return vError;
         }
+
+        [WebMethod]
+        public List<clsDepreciacion> GenerateDeprecation(int idActivo)
+        {
+            blDepreciacion blDepreciacion = new blDepreciacion();
+            string vError = string.Empty;
+
+            return blDepreciacion.GenerateDeprecation(idActivo, ref vError);
+        }
+
         #endregion
     }
 }

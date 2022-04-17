@@ -13,7 +13,7 @@ namespace WSHHVentasSeguros.Data
 
         public int Ano { get; set; }
 
-        public float Depreciacion { get; set; }
+        public double Depreciacion { get; set; }
 
         public int idActivo { get; set; }
 

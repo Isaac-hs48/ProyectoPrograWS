@@ -12,31 +12,39 @@ namespace WSHHVentasSeguros.Logic
 {
     public class blDepreciacion
     {
-        public bool InsertDepretiation(ref string pError)
+        public List<clsDepreciacion> GenerateDeprecation(int idActivo ,ref string pError)
         {
             SqlConnection conn = new SqlConnection(Connection.Connection.GetConnectionString());
 
             SqlCommand cmd = new SqlCommand();
 
-            bool success = false;
+            List<clsDepreciacion> deprecations = new List<clsDepreciacion>();
 
             try
             {
+                SqlDataReader reader;
+
                 cmd.Connection = conn;
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.CommandText = ClsShared.GetEnumPropertyName(ClsConstants.HHVentasSegurosObjects.spDepreciacion);
 
+                cmd.Parameters.Add(new SqlParameter("@IdActivo", idActivo));
+
                 conn.Open();
 
-                int vAffectedRows = cmd.ExecuteNonQuery();
+                reader = cmd.ExecuteReader();
 
-                if (vAffectedRows > 0) success = true;
+                while(reader.Read())
+                {
+                    clsDepreciacion depreciacion = Shared.ClsShared.FillObjectProperties<clsDepreciacion>(reader);
+
+                    deprecations.Add(depreciacion);
+                }
             }
             catch (Exception ex)
             {
-                success = false;
                 pError = $"Error en {MethodBase.GetCurrentMethod().Name}. Detalle: {ex.Message}";
             }
             finally
@@ -47,7 +55,7 @@ namespace WSHHVentasSeguros.Logic
                 conn = null;
             }
 
-            return success;
+            return deprecations;
         }
     }
 }

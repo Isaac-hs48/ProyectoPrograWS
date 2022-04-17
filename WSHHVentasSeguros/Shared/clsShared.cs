@@ -36,7 +36,7 @@ namespace WSHHVentasSeguros.Shared
                 {
                     if (prop.Name.Length < fieldNameLength) continue;
 
-                    if (fieldValue.GetType().Name != prop.PropertyType.Name) continue;
+                    if (fieldValue == null || fieldValue.GetType().Name != prop.PropertyType.Name) continue;
 
                     string propName = prop.Name.Substring(0, fieldNameLength);
 
