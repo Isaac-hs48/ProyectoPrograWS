@@ -15,7 +15,7 @@ namespace WSHHVentasSeguros.Data
 
         public string identificacion { get; set; }
 
-        public float totalColones { get; set; }
+        public double totalColones { get; set; }
 
         public string estado { get; set; }
 

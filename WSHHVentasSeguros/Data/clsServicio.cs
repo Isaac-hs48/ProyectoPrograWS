@@ -11,7 +11,7 @@ namespace WSHHVentasSeguros.Data
 
         public string tipoServicio { get; set; }
 
-        public float precioColones { get; set; }
+        public double precioColones { get; set; }
 
         public string estado { get; set; }
 
